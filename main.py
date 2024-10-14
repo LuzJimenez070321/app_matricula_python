@@ -1,30 +1,42 @@
-"""
-- Registrar alumnos
-- Generar fichas de matricula
-- Mostrar la lista de todos los matriculados 
-- Filtrar matriculados por programa de estudio 
-"""
-# inicio de problema
-# nesecito poder agregar mas alumnos sin la nesecidad d crear tantas variable 
-# posible solucionar crear o encerrar el codigo en un suglo while
 lista_alumnos=[]
+def mensaje_manu():
+     menu_opciones="""
+                         bienvenido al sistema
+                         registra tu alumno
+     1. escribe (s) si desas agregar un nuevo alumno
+     2. escribe (n) si deseas salir del sistema
+     escribe la accion que deseas realizar:""" 
+     return(menu_opciones)
 
-nombre=input("ingrese nombre del alumno: ")
-apellido=input("ingrese el apellido alumno: ")
+def ingresar_datos_alumnos():
+     id=len(lista_alumnos)+1
+     cui=int(input("ingresa el numero de su dni: "))
+     nombre=input("ingrese nombre del alumno: ")
+     apellido=input("ingrese el apellido del alumno: ")
+     numero_celular=input("ingrese el numero de celular del alumno: ")
+     programa_estudio=input("8ingrese el programa de estudio: ")
+     ciclo_academico=input("ingrese su ciclo academico: ")
+     email=input("ingrese su correo electronico: ")
+     guardar_datos_alumno(id,cui,nombre,apellido,numero_celular,programa_estudio,ciclo_academico,email)
 
-nombre2=input("ingrese nombre del alumno: ")
-apellido2=input("ingrese el apellido alumno: ")
-alumno={
-    "nombre":nombre,
-    "apellido":apellido
-}
-{
-    "nombre2":nombre2,
-    "apellido2":apellido2
-}
-lista_alumnos.append(nombre)
-lista_alumnos.append(nombre2)
-# fin de problema 
+def guardar_datos_alumno(id,cui,nombre,apellido,numero_celular,programa_estudio,ciclo_academico,email):
+     alumnos={
+          "id":id,
+          "cui":cui,
+          "nombre":nombre,
+          "apellido":apellido,
+          "numero_celular":numero_celular,
+          "programa_estudio":programa_estudio,
+          "ciclo_academico":ciclo_academico,
+          "email":email
+     }     
+while True:
+     mensaje_menu=input(mensaje_menu())
 
-# deseo mostrar un menu con las opciones de agregar un nuevo alumno y salir del progrma 
-print(lista_alumnos)
+     if menu_opciones.lower()== "n":
+          print("saliendo del sistema")
+          break
+     elif menu_opciones.lower() == "s":
+          ingresar_datos_alumno()
+     else:
+          print("opcion erronea")     
